@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import noteService from "./services/notes";
 
-
 const Note = (props) => {
   const deleteNumber = () => {
     console.log(props.note.id);
@@ -15,13 +14,13 @@ const Note = (props) => {
       .catch((error) => {
         console.log(error);
       });
-      props.removeNote(props.note.id);
-      // props.notes = props.notes.filter(n => n.id !== id)
+    props.removeNote(props.note.id);
+    // props.notes = props.notes.filter(n => n.id !== id)
   };
 
   return (
     <>
-      <li>{props.note.content}</li>
+      <li className='note' >{props.note.content}</li>
       <button onClick={deleteNumber}> Delete </button>
     </>
   );
@@ -58,11 +57,11 @@ const App = () => {
     setNewNote(event.target.value);
   };
 
-  const toggleImportanceOf = id => {
-    const note = notes.find(n => n.id === id)
-    const changedNote = { ...note, important: true }
+  const toggleImportanceOf = (id) => {
+    const note = notes.find((n) => n.id === id);
+    const changedNote = { ...note, important: true };
     console.log(changedNote);
-  }
+  };
 
   const removeNote = (noteId) => {
     const updatedNotes = notes.filter((note) => note.id !== noteId);
