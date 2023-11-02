@@ -23,25 +23,32 @@ let notes = [
 
 app.get("/", (request, response) => {
   response.send("<h1>vrai</h1>");
-  //   console.log(request);
 });
 
 app.get("/notes", (request, response) => {
   response.json(notes);
-  //   console.log(request);
 });
 
 app.get("/notes/:id", (request, response) => {
   const id = Number(request.params.id);
 
-//   response.json(notes[id - 1]);
-    console.log(id);
-    const note = notes.find((note) => {
-      return note.id === id;
-    });
-  //   console.log(note);
+  console.log(id);
+  const note = notes.find((note) => {
+    return note.id === id;
+  });
+  if (note) {
     response.json(note);
+  } else {
+    response.status(404).end();
+  }
 });
+
+app.delete('/notes/:id', (request, response) => {
+    const id = Number(request.params.id)
+    notes = notes.filter(note => note.id !== id)
+  
+    response.status(204).end()
+  })
 
 const PORT = 3001;
 app.listen(PORT, () => {
