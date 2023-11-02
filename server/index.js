@@ -23,12 +23,24 @@ let notes = [
 
 app.get("/", (request, response) => {
   response.send("<h1>vrai</h1>");
-  console.log(request);
+  //   console.log(request);
 });
 
 app.get("/notes", (request, response) => {
   response.json(notes);
-  console.log(request);
+  //   console.log(request);
+});
+
+app.get("/notes/:id", (request, response) => {
+  const id = Number(request.params.id);
+
+//   response.json(notes[id - 1]);
+    console.log(id);
+    const note = notes.find((note) => {
+      return note.id === id;
+    });
+  //   console.log(note);
+    response.json(note);
 });
 
 const PORT = 3001;
