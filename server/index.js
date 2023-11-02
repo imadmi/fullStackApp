@@ -1,20 +1,17 @@
-// import http from 'http'
-
 const express = require("express");
 const app = express();
 
 // Middleware : function that can be used for handling request and response objects
 const requestLogger = (request, response, next) => {
-    console.log("Method:", request.method);
-    console.log("Path:  ", request.path);
-    console.log("Body:  ", request.body);
-    console.log("---");
-    next();
+  console.log("Method:", request.method);
+  console.log("Path:  ", request.path);
+  console.log("Body:  ", request.body);
+  console.log("---");
+  next(); // call next function in the middleware chain
 };
 
 app.use(requestLogger);
 app.use(express.json());
-
 
 let notes = [
   {
@@ -87,6 +84,12 @@ app.post("/notes", (request, response) => {
 
   response.json(note);
 });
+
+// This middleware will be used for catching requests made to non-existent routes
+const unknownEndpoint = (request, response) => {
+  response.status(404).send({ error: "unknown endpoint" });
+};
+app.use(unknownEndpoint);
 
 const PORT = 3001;
 app.listen(PORT, () => {
