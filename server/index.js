@@ -1,6 +1,10 @@
 const express = require("express");
 const app = express();
 
+// Allow requests from other origins 
+const cors = require('cors')
+app.use(cors())
+
 // Middleware : function that can be used for handling request and response objects
 const requestLogger = (request, response, next) => {
   console.log("Method:", request.method);
