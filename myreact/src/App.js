@@ -74,6 +74,7 @@ const App = () => {
       <ul>
         {notes.map((note) => (
           <Note
+            className='notee'
             key={note.id}
             note={note}
             notes={notes}

@@ -73,9 +73,10 @@ app.post("/notes", (request, response) => {
   const body = request.body;
 
   if (!body.content) {
-    return response.status(400).json({
-      error: "content missing",
-    });
+    // return response.status(400).json({
+    //   error: "content missing",
+    // });
+    console.log("content missing");
   }
 
   const note = {

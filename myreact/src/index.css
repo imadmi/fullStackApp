@@ -12,7 +12,8 @@ code {
     monospace;
 }
 
-li {
+button {
+  display: inline;
   /* color: rgb(255, 255, 255);
   padding-top: 5px;
   font-size: 20px; */
@@ -28,8 +29,12 @@ h1 {
   color: rgb(0, 255, 132);
   background: lightgrey;
   font-size: 20px;
-  border-style: solid;
+  /* border-style: solid; */
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 10px;
+}
+
+.notee {
+  display: inline;
 }
